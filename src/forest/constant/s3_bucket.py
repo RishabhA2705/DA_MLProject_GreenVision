@@ -1,2 +1,2 @@
-TRAINING_BUCKET_NAME="forest-models"
-PREDICTION_BUCKET_NAME="forest-pred-dataa"
+TRAINING_BUCKET_NAME="forest-new_model"
+PREDICTION_BUCKET_NAME="forest-pred-new_data"
