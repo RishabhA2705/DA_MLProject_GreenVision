@@ -86,7 +86,13 @@ class DataIngestion:
             dataframe = self.export_data_into_feature_store()
             _schema_config = read_yaml_file(file_path=SCHEMA_FILE_PATH)
 
-            dataframe = dataframe.drop(_schema_config["drop_columns"], axis=1)
+            drop_cols = _schema_config.get("drop_columns", [])
+
+            # Drop only existing columns
+            dataframe = dataframe.drop(
+            columns=[col for col in drop_cols if col in dataframe.columns],
+            errors="ignore"
+            )
 
             logging.info("Got the data from mongodb")
 
